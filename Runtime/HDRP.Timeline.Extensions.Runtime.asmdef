@@ -1,0 +1,28 @@
+{
+    "name": "HDRP.Timeline.Extensions.Runtime",
+    "references": [
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.HighDefinition.Runtime",
+        "Unity.Timeline"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "5.8.0",
+            "define": "HDRP"
+        },
+        {
+            "name": "com.unity.render-pipelines.core",
+            "expression": "5.8.0",
+            "define": "SRP_CORE"
+        }
+    ]
+}

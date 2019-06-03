@@ -1,0 +1,11 @@
+{
+  "name": "hdrp.timeline.extensions",
+  "displayName": "High Definition RP Timeline Extensions",
+  "version": "0.0.1",
+  "unity": "2019.1",
+  "description": "Timeline tracks for HDRP post-processing effects.",
+  "dependencies": {
+    "com.unity.timeline": "0.0.1",
+    "com.unity.render-pipelines.high-definition": "5.7.2"
+  }
+}
