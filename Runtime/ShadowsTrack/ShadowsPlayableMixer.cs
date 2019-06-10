@@ -72,8 +72,10 @@ public class ShadowsPlayableMixer : PlayableBehaviour
         }
         profile.TryGet<HDShadowSettings>(out m_shadowSettings);
 
-        m_shadowSettings.maxShadowDistance = newMaxDistance;
-        m_shadowSettings.cascadeShadowSplitCount = newCascadeCount;
+        m_shadowSettings.maxShadowDistance.overrideState = newMaxDistance.overrideState;
+        m_shadowSettings.maxShadowDistance.value = newMaxDistance.value;
+        m_shadowSettings.cascadeShadowSplitCount.overrideState = newCascadeCount.overrideState;
+        m_shadowSettings.cascadeShadowSplitCount.value = newCascadeCount.value;
         m_shadowSettings.cascadeShadowSplit2.overrideState = newSplit2.overrideState;
         m_shadowSettings.cascadeShadowSplit1.overrideState = newSplit1.overrideState;
         m_shadowSettings.cascadeShadowSplit0.overrideState = newSplit0.overrideState;
