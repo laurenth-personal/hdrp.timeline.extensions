@@ -14,7 +14,7 @@ public class ShadowsTrack : TrackAsset
         foreach (var c in GetClips())
         {
             ShadowsPlayableAsset postprocessingPlayable = (ShadowsPlayableAsset)c.asset;
-            c.displayName = "count " + postprocessingPlayable.shadowsPlayable.cascadeCount.ToString() + " max distance " + postprocessingPlayable.shadowsPlayable.maxDistance.ToString();
+            c.displayName = "count " + postprocessingPlayable.shadowsPlayable.cascadesCount.value.ToString() + " max distance " + postprocessingPlayable.shadowsPlayable.maxDistance.value.ToString();
         }
         return ScriptPlayable<ShadowsPlayableMixer>.Create(graph, inputCount);
 

@@ -1,9 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-// IngredientDrawerUIE
 [CustomPropertyDrawer(typeof(DOFPlayable))]
-public class DOFPlayableDrawerUIE : PropertyDrawer
+public class DOFPlayableDrawer : PropertyDrawer
 {
     // Draw the property inside the given rect
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

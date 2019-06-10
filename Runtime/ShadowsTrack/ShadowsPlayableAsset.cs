@@ -7,19 +7,14 @@ using UnityEngine.Rendering;
 [Serializable]
 public class ShadowsPlayable : PlayableBehaviour
 {
-    public FloatParameter maxDistances = new FloatParameter(100);
-    public float maxDistance = 500;
-    [Range(1, 4)]
-    public int cascadeCount = 4;
-    [Range(0,1)]
-    public float split0 = 0.05f;
-    [Range(0, 1)]
-    public float split1 = 0.12f;
-    [Range(0, 1)]
-    public float split2 = 0.3f;
+    public FloatParameter maxDistance = new FloatParameter(100);
+    public IntParameter cascadesCount = new IntParameter(4);
+    public ClampedFloatParameter split0 = new ClampedFloatParameter(0.05f,0f,1f);
+    public ClampedFloatParameter split1 = new ClampedFloatParameter(0.12f, 0f, 1f);
+    public ClampedFloatParameter split2 = new ClampedFloatParameter(0.3f, 0f, 1f);
 }
 
-[Serializable]
+[Serializable]  
 public class ShadowsPlayableAsset : PlayableAsset, ITimelineClipAsset
 {
     public ShadowsPlayable shadowsPlayable = new ShadowsPlayable();

@@ -11,10 +11,7 @@ public class ShadowsPlayableMixer : PlayableBehaviour
         if (playerData == null)
             return;
         var volume = playerData as Volume;
-        //var camera = Camera.main;
-        //if (camera == null || Camera.main.transform.parent.gameObject.tag == "Player")
-        //    return;
-        //var volume = camera.GetComponent<Volume>();
+
         HDShadowSettings m_shadowSettings;
 
         var profile = Application.isPlaying
@@ -24,11 +21,11 @@ public class ShadowsPlayableMixer : PlayableBehaviour
         if (!profile.Has<HDShadowSettings>())
             return;
 
-        float newMaxDistance = 0;
-        int newCascadeCount = 0;
-        float newSplit0 = 0f;
-        float newSplit1 = 0f;
-        float newSplit2 = 0f;
+        NoInterpMinFloatParameter newMaxDistance = new NoInterpMinFloatParameter(0,0,false);
+        NoInterpClampedIntParameter newCascadeCount = new NoInterpClampedIntParameter(1,1,4,false);
+        FloatParameter newSplit0 = new FloatParameter(0);
+        FloatParameter newSplit1 = new FloatParameter(0);
+        FloatParameter newSplit2 = new FloatParameter(0);
 
         var count = handle.GetInputCount();
         for (var i = 0; i < count; i++)
@@ -44,20 +41,44 @@ public class ShadowsPlayableMixer : PlayableBehaviour
                 var data = ((ScriptPlayable<ShadowsPlayable>)inputHandle).GetBehaviour();
                 if (data != null)
                 {
-                    newMaxDistance = data.maxDistance * weight;
-                    newCascadeCount = Mathf.FloorToInt((float)data.cascadeCount * weight);
-                    newSplit0 = data.split0 * weight;
-                    newSplit1 = data.split1 * weight;
-                    newSplit2 = data.split2 * weight;
+                    if(data.maxDistance.overrideState)
+                    {
+                        newMaxDistance.overrideState = true;
+                        newMaxDistance.value = data.maxDistance.value* weight;
+                    }
+                    if(data.cascadesCount.overrideState)
+                    {
+                        newCascadeCount.overrideState = true;
+                        newCascadeCount.value = Mathf.FloorToInt((float)data.cascadesCount.value * weight);
+                    }
+                    if(data.split0.overrideState)
+                    {
+                        newSplit0.overrideState = true;
+                        newSplit0.value = data.split0.value * weight;
+                    }
+                    if (data.split1.overrideState)
+                    {
+                        newSplit1.overrideState = true;
+                        newSplit1.value = data.split1.value * weight;
+                    }
+                    if (data.split2.overrideState)
+                    {
+                        newSplit2.overrideState = true;
+                        newSplit2.value = data.split2.value * weight;
+                    }
                 }
 
             }
         }
         profile.TryGet<HDShadowSettings>(out m_shadowSettings);
-        m_shadowSettings.maxShadowDistance.value = newMaxDistance;
-        m_shadowSettings.cascadeShadowSplitCount.value = newCascadeCount;
-        m_shadowSettings.cascadeShadowSplit0.value = newSplit0;
-        m_shadowSettings.cascadeShadowSplit1.value = newSplit1;
-        m_shadowSettings.cascadeShadowSplit2.value = newSplit2;
+
+        m_shadowSettings.maxShadowDistance = newMaxDistance;
+        m_shadowSettings.cascadeShadowSplitCount = newCascadeCount;
+        m_shadowSettings.cascadeShadowSplit2.overrideState = newSplit2.overrideState;
+        m_shadowSettings.cascadeShadowSplit1.overrideState = newSplit1.overrideState;
+        m_shadowSettings.cascadeShadowSplit0.overrideState = newSplit0.overrideState;
+        m_shadowSettings.cascadeShadowSplit2.value = newSplit2.value;
+        m_shadowSettings.cascadeShadowSplit1.value = newSplit1.value;
+        m_shadowSettings.cascadeShadowSplit0.value = newSplit0.value;
     }
 }
