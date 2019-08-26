@@ -124,7 +124,7 @@ public class DOFPlayableMixer : PlayableBehaviour
         m_depthOfField.nearFocusStart.overrideState = overrideNearStart;
         m_depthOfField.nearFocusStart.value = nearStart;
         m_depthOfField.nearFocusEnd.overrideState = overrideNearEnd;
-        m_depthOfField.nearFocusEnd.value = focusDistance;
+        m_depthOfField.nearFocusEnd.value = nearEnd;
         m_depthOfField.nearMaxBlur.overrideState = overrideNearMaxRadius;
         m_depthOfField.nearMaxBlur.value = nearMaxRadius;
         m_depthOfField.farFocusStart.overrideState = overrideFarStart;
