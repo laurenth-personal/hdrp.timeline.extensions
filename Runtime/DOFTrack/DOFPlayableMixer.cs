@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Rendering;
-using UnityEngine.Experimental.Rendering.HDPipeline;
+using UnityEngine.Rendering.HighDefinition;
 
 public class DOFPlayableMixer : PlayableBehaviour
 {
@@ -125,13 +125,13 @@ public class DOFPlayableMixer : PlayableBehaviour
         m_depthOfField.nearFocusStart.value = nearStart;
         m_depthOfField.nearFocusEnd.overrideState = overrideNearEnd;
         m_depthOfField.nearFocusEnd.value = nearEnd;
-        m_depthOfField.nearMaxBlur.overrideState = overrideNearMaxRadius;
-        m_depthOfField.nearMaxBlur.value = nearMaxRadius;
-        m_depthOfField.farFocusStart.overrideState = overrideFarStart;
+        //m_depthOfField.nearMaxBlur.overrideState = overrideNearMaxRadius;
+        m_depthOfField.nearMaxBlur = nearMaxRadius;
+        //m_depthOfField.farFocusStart.overrideState = overrideFarStart;
         m_depthOfField.farFocusStart.value = farStart;
-        m_depthOfField.farFocusEnd.overrideState = overrideFarEnd;
+        //m_depthOfField.farFocusEnd.overrideState = overrideFarEnd;
         m_depthOfField.farFocusEnd.value = farEnd;
-        m_depthOfField.farMaxBlur.overrideState = overrideFarMaxRadius;
-        m_depthOfField.farMaxBlur.value = farMaxRadius;
+        //m_depthOfField.farMaxBlur.overrideState = overrideFarMaxRadius;
+        m_depthOfField.farMaxBlur = farMaxRadius;
     }
 }

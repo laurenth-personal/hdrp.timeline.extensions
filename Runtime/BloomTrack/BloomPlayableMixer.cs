@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Experimental.Rendering.HDPipeline;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
 
 public class BloomPlayableMixer : PlayableBehaviour
